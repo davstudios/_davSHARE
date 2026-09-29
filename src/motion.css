@@ -1,0 +1,483 @@
+:root{
+  --motion-reveal-distance:1.15rem;
+  --motion-reveal-duration:680ms;
+  --motion-reveal-step:72ms;
+  --motion-page-out:180ms;
+  --motion-page-in:420ms;
+  --motion-ease-out:cubic-bezier(.16,1,.3,1);
+  --motion-ease-in:cubic-bezier(.4,0,1,1)
+}
+.shell[data-motion-mode="startup"] .brand,
+.shell[data-motion-mode="startup"] .nav-item,
+.shell[data-motion-mode="startup"] .sidebar-bottom,
+.shell[data-motion-mode="startup"] .main>.topbar,
+.shell[data-motion-mode="startup"] .main>.workspace,
+.shell[data-motion-mode="startup"] .main>.history-page,
+.shell[data-motion-mode="startup"] .main>.settings-grid{
+  animation:dav-load-in var(--motion-reveal-duration) var(--motion-ease-out) both
+}
+.shell[data-motion-mode="startup"] .brand{animation-delay:0ms}
+.shell[data-motion-mode="startup"] .nav-item:nth-child(1){animation-delay:72ms}
+.shell[data-motion-mode="startup"] .nav-item:nth-child(2){animation-delay:144ms}
+.shell[data-motion-mode="startup"] .nav-item:nth-child(3){animation-delay:216ms}
+.shell[data-motion-mode="startup"] .sidebar-bottom{animation-delay:288ms}
+.shell[data-motion-mode="startup"] .main>.topbar{animation-delay:72ms}
+.shell[data-motion-mode="startup"] .main>.workspace,
+.shell[data-motion-mode="startup"] .main>.history-page,
+.shell[data-motion-mode="startup"] .main>.settings-grid{animation-delay:144ms}
+.shell[data-motion-mode="page"] .main>.topbar,
+.shell[data-motion-mode="page"] .main>.workspace,
+.shell[data-motion-mode="page"] .main>.history-page,
+.shell[data-motion-mode="page"] .main>.settings-grid{
+  animation:dav-page-in var(--motion-page-in) var(--motion-ease-out) both
+}
+.shell[data-motion-mode="page"] .main>.workspace,
+.shell[data-motion-mode="page"] .main>.history-page,
+.shell[data-motion-mode="page"] .main>.settings-grid{animation-delay:58ms}
+.shell[data-motion-mode="content"] .workspace-grid>.panel,
+.shell[data-motion-mode="content"] .empty-wrap>.drop-zone,
+.shell[data-motion-mode="content"] .empty-wrap>.trust-row{
+  animation:dav-load-in 520ms var(--motion-ease-out) both
+}
+.shell[data-motion-mode="content"] .workspace-grid>.panel:nth-child(2),
+.shell[data-motion-mode="content"] .empty-wrap>.trust-row{animation-delay:72ms}
+.shell[data-motion-mode="content"] .trust-row>div{
+  animation:dav-soft-in 520ms var(--motion-ease-out) both
+}
+.shell[data-motion-mode="content"] .trust-row>div:nth-child(1){animation-delay:144ms}
+.shell[data-motion-mode="content"] .trust-row>div:nth-child(2){animation-delay:216ms}
+.shell[data-motion-mode="content"] .trust-row>div:nth-child(3){animation-delay:288ms}
+.shell[data-motion-mode="rules"] .rule-card{
+  animation:dav-rule-settle 360ms var(--motion-ease-out) both;
+  animation-delay:var(--reveal-delay,0ms)
+}
+.rule-picker{transform-origin:top right;animation:dav-pop-in 220ms var(--motion-ease-out) both}
+.toast{animation:dav-toast-in 420ms var(--motion-ease-out) both}
+.toast.is-leaving{animation:dav-toast-out 180ms var(--motion-ease-in) both}
+.button,.icon-button,.nav-item,.rule-picker button,.text-button,.rule-card,.trust-row>div,.drop-zone,.setting-row,input,select{
+  transition-timing-function:var(--motion-ease-out)
+}
+.button:active:not(:disabled),.icon-button:active:not(:disabled),.nav-item:active,.rule-picker button:active{transform:scale(.975)}
+.drop-icon{transition:transform 420ms var(--motion-ease-out),background-color 260ms var(--motion-ease-out)}
+.drop-zone:hover .drop-icon{transform:translate3d(0,-3px,0) scale(1.025)}
+.drop-zone.drag-over .drop-icon{animation:dav-drop-pulse 900ms var(--motion-ease-out) infinite alternate}
+.rule-card:hover{transform:translate3d(0,-1px,0);border-color:color-mix(in srgb,var(--accent) 28%,var(--border))}
+.trust-row>div:hover{transform:translate3d(0,-2px,0);border-color:color-mix(in srgb,var(--accent) 24%,var(--border));box-shadow:0 12px 28px rgba(0,0,0,.05)}
+[data-theme="dark"] .trust-row>div:hover{box-shadow:0 12px 32px rgba(0,0,0,.18)}
+.status{transition:background-color 260ms var(--motion-ease-out),color 260ms var(--motion-ease-out),transform 260ms var(--motion-ease-out)}
+tr:hover .status{transform:translate3d(2px,0,0)}
+.switch span,.switch span:after{transition-duration:260ms;transition-timing-function:var(--motion-ease-out)}
+input:focus,select:focus{transition:border-color 220ms var(--motion-ease-out),box-shadow 220ms var(--motion-ease-out),background-color 220ms var(--motion-ease-out)}
+@keyframes dav-load-in{
+  from{opacity:0;transform:translate3d(0,var(--motion-reveal-distance),0)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-page-in{
+  from{opacity:0;transform:translate3d(0,.55rem,0)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-soft-in{
+  from{opacity:0;transform:translate3d(0,.7rem,0) scale(.99)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-rule-settle{
+  from{opacity:.45;transform:translate3d(0,.45rem,0) scale(.992)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-pop-in{
+  from{opacity:0;transform:translate3d(0,-6px,0) scale(.975)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-toast-in{
+  from{opacity:0;transform:translate3d(0,12px,0) scale(.985)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-toast-out{
+  from{opacity:1;transform:none}
+  to{opacity:0;transform:translate3d(0,6px,0) scale(.985)}
+}
+@keyframes dav-drop-pulse{
+  from{transform:translate3d(0,-2px,0) scale(1.02)}
+  to{transform:translate3d(0,-6px,0) scale(1.055)}
+}
+@media (prefers-reduced-motion:reduce){
+  .shell[data-motion-mode] .brand,
+  .shell[data-motion-mode] .nav-item,
+  .shell[data-motion-mode] .sidebar-bottom,
+  .shell[data-motion-mode] .main>* ,
+  .shell[data-motion-mode] .workspace-grid>.panel,
+  .shell[data-motion-mode] .empty-wrap>* ,
+  .shell[data-motion-mode] .trust-row>div,
+  .shell[data-motion-mode] .rule-card,
+  .rule-picker,.toast,.toast.is-leaving,.drop-zone.drag-over .drop-icon{animation:none!important}
+  *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
+:root[data-ui-transition="theme"]::view-transition-old(root){animation:dav-theme-out 180ms var(--motion-ease-in) both}:root[data-ui-transition="theme"]::view-transition-new(root){animation:dav-theme-in 420ms var(--motion-ease-out) both}:root[data-ui-transition="language"]::view-transition-old(root){animation:dav-language-out 180ms var(--motion-ease-in) both}:root[data-ui-transition="language"]::view-transition-new(root){animation:dav-language-in 420ms var(--motion-ease-out) both}:root[data-ui-transition="theme-out"] #app{animation:dav-theme-out 180ms var(--motion-ease-in) both}:root[data-ui-transition="theme-in"] #app{animation:dav-theme-in 420ms var(--motion-ease-out) both}:root[data-ui-transition="language-out"] #app{animation:dav-language-out 180ms var(--motion-ease-in) both}:root[data-ui-transition="language-in"] #app{animation:dav-language-in 420ms var(--motion-ease-out) both}@keyframes dav-theme-out{from{opacity:1;transform:none}to{opacity:0;transform:scale(.997)}}@keyframes dav-theme-in{from{opacity:0;transform:scale(1.003)}to{opacity:1;transform:none}}@keyframes dav-language-out{from{opacity:1;transform:none}to{opacity:0;transform:translate3d(0,-.3rem,0)}}@keyframes dav-language-in{from{opacity:0;transform:translate3d(0,.55rem,0)}to{opacity:1;transform:none}}
+.shell[data-motion-mode="startup"] .image-workspace>.panel,.shell[data-motion-mode="startup"] .workspace-center>.panel,.shell[data-motion-mode="startup"] .metadata-workspace>.panel,.shell[data-motion-mode="startup"] .metadata-main>.panel{animation:dav-load-in var(--motion-reveal-duration) var(--motion-ease-out) both}.shell[data-motion-mode="startup"] .image-workspace>.panel:nth-child(1),.shell[data-motion-mode="startup"] .metadata-workspace>.panel{animation-delay:144ms}.shell[data-motion-mode="startup"] .workspace-center>.panel,.shell[data-motion-mode="startup"] .metadata-main>.panel{animation-delay:216ms}.shell[data-motion-mode="startup"] .image-workspace>.controls-panel{animation-delay:288ms}.shell[data-motion-mode="content"] .image-workspace>.panel,.shell[data-motion-mode="content"] .workspace-center>.panel,.shell[data-motion-mode="content"] .metadata-workspace>.panel,.shell[data-motion-mode="content"] .metadata-main>.panel{animation:dav-soft-in 520ms var(--motion-ease-out) both}.file-row{animation:dav-file-in 360ms var(--motion-ease-out) both}.file-row:nth-child(1){animation-delay:25ms}.file-row:nth-child(2){animation-delay:50ms}.file-row:nth-child(3){animation-delay:75ms}.file-row:nth-child(4){animation-delay:100ms}.file-row:nth-child(5){animation-delay:125ms}.format-tile,.preset-tile{animation:dav-soft-in 340ms var(--motion-ease-out) both}.format-tile:nth-child(2),.preset-tile:nth-child(2){animation-delay:35ms}.format-tile:nth-child(3),.preset-tile:nth-child(3){animation-delay:70ms}.format-tile:nth-child(4),.preset-tile:nth-child(4){animation-delay:105ms}.format-tile:nth-child(5),.preset-tile:nth-child(5){animation-delay:140ms}.format-tile:nth-child(6),.preset-tile:nth-child(6){animation-delay:175ms}.preview-stage img{animation:dav-image-in 520ms var(--motion-ease-out) both}.result-card{animation:dav-result-in 520ms var(--motion-ease-out) both}.progress-fill{transition-timing-function:var(--motion-ease-out)}@keyframes dav-file-in{from{opacity:0;transform:translate3d(-5px,0,0)}to{opacity:1;transform:none}}@keyframes dav-image-in{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}@keyframes dav-result-in{from{opacity:0;transform:translate3d(0,8px,0) scale(.99)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.file-row,.format-tile,.preset-tile,.preview-stage img,.result-card{animation:none!important}}
+.shell[data-motion-mode="startup"] .space-overview>.panel,.shell[data-motion-mode="startup"] .space-overview>.overview-grid>.panel,.shell[data-motion-mode="content"] .space-overview>.panel,.shell[data-motion-mode="content"] .space-overview>.overview-grid>.panel{animation:dav-soft-in 520ms var(--motion-ease-out) both}.shell[data-motion-mode="startup"] .space-overview>.panel:nth-child(2),.shell[data-motion-mode="content"] .space-overview>.panel:nth-child(2){animation-delay:72ms}.rank-row,.category-row,.folder-row,.data-table tbody tr{animation:dav-file-in 360ms var(--motion-ease-out) both}@media(prefers-reduced-motion:reduce){.rank-row,.category-row,.folder-row,.data-table tbody tr,.pulse-line{animation:none!important}}
+
+.shell[data-motion-mode="startup"] .clipboard-history-page>.clipboard-stats,.shell[data-motion-mode="startup"] .clipboard-history-page>.clipboard-toolbar,.shell[data-motion-mode="startup"] .clipboard-history-page>.clipboard-panel,.shell[data-motion-mode="startup"] .clipboard-history-page>.privacy-banner,.shell[data-motion-mode="content"] .clipboard-history-page>.clipboard-stats,.shell[data-motion-mode="content"] .clipboard-history-page>.clipboard-toolbar,.shell[data-motion-mode="content"] .clipboard-history-page>.clipboard-panel,.shell[data-motion-mode="content"] .clipboard-history-page>.privacy-banner{animation:dav-soft-in 520ms var(--motion-ease-out) both}.shell[data-motion-mode="startup"] .clipboard-history-page>.clipboard-stats,.shell[data-motion-mode="content"] .clipboard-history-page>.clipboard-stats{animation-delay:36ms}.shell[data-motion-mode="startup"] .clipboard-history-page>.clipboard-toolbar,.shell[data-motion-mode="content"] .clipboard-history-page>.clipboard-toolbar{animation-delay:72ms}.shell[data-motion-mode="startup"] .clipboard-history-page>.clipboard-panel,.shell[data-motion-mode="content"] .clipboard-history-page>.clipboard-panel{animation-delay:108ms}.shell[data-motion-mode="startup"] .clipboard-history-page>.privacy-banner,.shell[data-motion-mode="content"] .clipboard-history-page>.privacy-banner{animation-delay:144ms}.shell[data-motion-mode="startup"] .clipboard-stats>.stat-card,.shell[data-motion-mode="page"] .clipboard-stats>.stat-card,.shell[data-motion-mode="content"] .clipboard-stats>.stat-card{animation:dav-soft-in 420ms var(--motion-ease-out) both}.shell[data-motion-mode] .clipboard-stats>.stat-card:nth-child(2){animation-delay:45ms}.shell[data-motion-mode] .clipboard-stats>.stat-card:nth-child(3){animation-delay:90ms}.shell[data-motion-mode="startup"] .clip-row,.shell[data-motion-mode="page"] .clip-row,.shell[data-motion-mode="content"] .clip-row{animation:dav-file-in 360ms var(--motion-ease-out) both}.shell[data-motion-mode] .clip-row:nth-child(1){animation-delay:25ms}.shell[data-motion-mode] .clip-row:nth-child(2){animation-delay:50ms}.shell[data-motion-mode] .clip-row:nth-child(3){animation-delay:75ms}.shell[data-motion-mode] .clip-row:nth-child(4){animation-delay:100ms}.shell[data-motion-mode] .clip-row:nth-child(5){animation-delay:125ms}.shell[data-motion-mode] .clip-row:nth-child(6){animation-delay:150ms}.shell[data-motion-mode] .clip-row:nth-child(7){animation-delay:175ms}.shell[data-motion-mode] .clip-row:nth-child(8){animation-delay:200ms}.shell[data-motion-mode="startup"] .clipboard-empty-mark,.shell[data-motion-mode="page"] .clipboard-empty-mark,.shell[data-motion-mode="content"] .clipboard-empty-mark{animation:dav-soft-in 520ms var(--motion-ease-out) both}.shell[data-motion-mode="content"] .settings-grid>.panel{animation:dav-soft-in 520ms var(--motion-ease-out) both}.shell[data-motion-mode="content"] .settings-grid>.panel:nth-child(2){animation-delay:72ms}.shell[data-motion-mode="content"] .settings-grid>.panel:nth-child(3){animation-delay:144ms}@media(prefers-reduced-motion:reduce){.clipboard-history-page>.clipboard-stats,.clipboard-history-page>.clipboard-toolbar,.clipboard-history-page>.clipboard-panel,.clipboard-history-page>.privacy-banner,.clipboard-stats>.stat-card,.clip-row,.clipboard-empty-mark,.settings-grid>.panel{animation:none!important}}
+
+.shell[data-motion-mode="startup"] .convert-page>.convert-stats,.shell[data-motion-mode="startup"] .convert-page>.convert-workspace,.shell[data-motion-mode="startup"] .convert-page>.privacy-banner,.shell[data-motion-mode="content"] .convert-page>.convert-stats,.shell[data-motion-mode="content"] .convert-page>.convert-workspace,.shell[data-motion-mode="content"] .convert-page>.privacy-banner,.shell[data-motion-mode="startup"] .queue-page>.convert-stats,.shell[data-motion-mode="startup"] .queue-page>.queue-panel,.shell[data-motion-mode="content"] .queue-page>.convert-stats,.shell[data-motion-mode="content"] .queue-page>.queue-panel{animation:dav-soft-in 520ms var(--motion-ease-out) both}.shell[data-motion-mode] .convert-page>.convert-workspace,.shell[data-motion-mode] .queue-page>.queue-panel{animation-delay:72ms}.shell[data-motion-mode] .convert-page>.privacy-banner{animation-delay:144ms}.convert-file-row{animation:dav-file-in 360ms var(--motion-ease-out) both}.convert-file-row:nth-child(2){animation-delay:30ms}.convert-file-row:nth-child(3){animation-delay:60ms}.convert-file-row:nth-child(4){animation-delay:90ms}.convert-file-row:nth-child(5){animation-delay:120ms}.convert-drop-zone .drop-icon,.empty-mark{animation:dav-soft-in 520ms var(--motion-ease-out) both}@media(prefers-reduced-motion:reduce){.convert-file-row,.convert-drop-zone .drop-icon,.empty-mark{animation:none!important}}
+
+
+.shell[data-motion-mode="startup"] .uninstall-apps-page>.stats-strip,
+.shell[data-motion-mode="startup"] .uninstall-apps-page>.uninstall-workspace,
+.shell[data-motion-mode="page"] .uninstall-apps-page>.stats-strip,
+.shell[data-motion-mode="page"] .uninstall-apps-page>.uninstall-workspace,
+.shell[data-motion-mode="content"] .uninstall-apps-page>.stats-strip,
+.shell[data-motion-mode="content"] .uninstall-apps-page>.uninstall-workspace,
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.guard-banner,
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.residual-summary,
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.residual-grid,
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.cleanup-bar,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.guard-banner,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.residual-summary,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.residual-grid,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.cleanup-bar,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.guard-banner,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.residual-summary,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.residual-grid,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.cleanup-bar,
+.shell[data-motion-mode="startup"] .uninstall-temp-page>.temp-intro,
+.shell[data-motion-mode="startup"] .uninstall-temp-page>.stats-strip,
+.shell[data-motion-mode="startup"] .uninstall-temp-page>.guard-banner,
+.shell[data-motion-mode="startup"] .uninstall-temp-page>.large-panel,
+.shell[data-motion-mode="page"] .uninstall-temp-page>.temp-intro,
+.shell[data-motion-mode="page"] .uninstall-temp-page>.stats-strip,
+.shell[data-motion-mode="page"] .uninstall-temp-page>.guard-banner,
+.shell[data-motion-mode="page"] .uninstall-temp-page>.large-panel,
+.shell[data-motion-mode="content"] .uninstall-temp-page>.temp-intro,
+.shell[data-motion-mode="content"] .uninstall-temp-page>.stats-strip,
+.shell[data-motion-mode="content"] .uninstall-temp-page>.guard-banner,
+.shell[data-motion-mode="content"] .uninstall-temp-page>.large-panel,
+.shell[data-motion-mode="startup"] .uninstall-settings-page>.panel,
+.shell[data-motion-mode="page"] .uninstall-settings-page>.panel,
+.shell[data-motion-mode="content"] .uninstall-settings-page>.panel{
+  animation:dav-soft-in 520ms var(--motion-ease-out) both
+}
+.shell[data-motion-mode] .uninstall-apps-page>.uninstall-workspace{animation-delay:72ms}
+.shell[data-motion-mode] .uninstall-residuals-page>.residual-summary{animation-delay:45ms}
+.shell[data-motion-mode] .uninstall-residuals-page>.residual-grid{animation-delay:90ms}
+.shell[data-motion-mode] .uninstall-residuals-page>.cleanup-bar{animation-delay:135ms}
+.shell[data-motion-mode] .uninstall-temp-page>.stats-strip{animation-delay:45ms}
+.shell[data-motion-mode] .uninstall-temp-page>.guard-banner{animation-delay:72ms}
+.shell[data-motion-mode] .uninstall-temp-page>.large-panel{animation-delay:105ms}
+.shell[data-motion-mode] .uninstall-settings-page>.panel:nth-child(2){animation-delay:72ms}
+.shell[data-motion-mode] .uninstall-settings-page>.panel:nth-child(3){animation-delay:144ms}
+.shell[data-motion-mode] .stats-strip>.stat-card{
+  animation:dav-soft-in 420ms var(--motion-ease-out) both
+}
+.shell[data-motion-mode] .stats-strip>.stat-card:nth-child(2){animation-delay:45ms}
+.shell[data-motion-mode] .stats-strip>.stat-card:nth-child(3){animation-delay:90ms}
+.shell[data-motion-mode] .uninstall-workspace>.panel,
+.shell[data-motion-mode] .residual-grid>.panel{
+  animation:dav-soft-in 460ms var(--motion-ease-out) both
+}
+.shell[data-motion-mode] .uninstall-workspace>.panel:nth-child(2),
+.shell[data-motion-mode] .residual-grid>.panel:nth-child(2){animation-delay:55ms}
+.shell[data-motion-mode="startup"] .app-row,
+.shell[data-motion-mode="page"] .app-row,
+.shell[data-motion-mode="content"] .app-row{
+  animation:dav-uninstall-row-in 340ms var(--motion-ease-out) both
+}
+.shell[data-motion-mode] .app-row:nth-child(1){animation-delay:20ms}
+.shell[data-motion-mode] .app-row:nth-child(2){animation-delay:40ms}
+.shell[data-motion-mode] .app-row:nth-child(3){animation-delay:60ms}
+.shell[data-motion-mode] .app-row:nth-child(4){animation-delay:80ms}
+.shell[data-motion-mode] .app-row:nth-child(5){animation-delay:100ms}
+.shell[data-motion-mode] .app-row:nth-child(6){animation-delay:120ms}
+.shell[data-motion-mode] .app-row:nth-child(7){animation-delay:140ms}
+.shell[data-motion-mode] .app-row:nth-child(8){animation-delay:160ms}
+.shell[data-motion-mode] .app-row:nth-child(9){animation-delay:180ms}
+.shell[data-motion-mode] .app-row:nth-child(10){animation-delay:200ms}
+.shell[data-motion-mode="filter"] .app-row{
+  animation:dav-uninstall-filter-in 180ms var(--motion-ease-out) both
+}
+.shell[data-motion-mode="selection"] .detail-panel>.app-detail-head,
+.shell[data-motion-mode="selection"] .detail-panel>.detail-grid,
+.shell[data-motion-mode="selection"] .detail-panel>.safety-note,
+.shell[data-motion-mode="selection"] .detail-panel>.detail-actions,
+.shell[data-motion-mode="selection"] .detail-panel>.platform-note,
+.shell[data-motion-mode="selection"] .cleanup-bar,
+.shell[data-motion-mode="selection"] .cleanup-footer{
+  animation:dav-soft-in 300ms var(--motion-ease-out) both
+}
+.shell[data-motion-mode="selection"] .detail-panel>.detail-grid{animation-delay:30ms}
+.shell[data-motion-mode="selection"] .detail-panel>.safety-note{animation-delay:60ms}
+.shell[data-motion-mode="selection"] .detail-panel>.detail-actions{animation-delay:90ms}
+.shell[data-motion-mode="selection"] .detail-panel>.platform-note{animation-delay:120ms}
+.residual-row,.temp-row{
+  animation:dav-uninstall-row-in 340ms var(--motion-ease-out) both
+}
+.residual-row:nth-child(2),.temp-row:nth-child(2){animation-delay:25ms}
+.residual-row:nth-child(3),.temp-row:nth-child(3){animation-delay:50ms}
+.residual-row:nth-child(4),.temp-row:nth-child(4){animation-delay:75ms}
+.residual-row:nth-child(5),.temp-row:nth-child(5){animation-delay:100ms}
+.residual-row:nth-child(6),.temp-row:nth-child(6){animation-delay:125ms}
+.residual-row:nth-child(7),.temp-row:nth-child(7){animation-delay:150ms}
+.residual-row:nth-child(8),.temp-row:nth-child(8){animation-delay:175ms}
+.detail-empty .empty-icon,.list-empty.fill .empty-icon,.summary-mark{
+  animation:dav-uninstall-mark-in 500ms var(--motion-ease-out) both
+}
+.search-box,.app-row,.residual-row,.temp-row,.stat-card,.safety-note,.guard-banner,.cleanup-bar,.temp-intro{
+  transition:transform 220ms var(--motion-ease-out),border-color 220ms var(--motion-ease-out),background-color 220ms var(--motion-ease-out),box-shadow 220ms var(--motion-ease-out)
+}
+.search-box:focus-within{
+  border-color:color-mix(in srgb,var(--accent) 55%,var(--border));
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 10%,transparent)
+}
+.app-row:hover{transform:translate3d(2px,0,0)}
+.residual-row:not(.locked):hover,.temp-row:hover{
+  transform:translate3d(2px,0,0);
+  border-color:color-mix(in srgb,var(--accent) 25%,var(--border))
+}
+.stat-card:hover{transform:translate3d(0,-1px,0)}
+.refresh-fill-icon{transform-origin:50% 50%;transition:transform 360ms var(--motion-ease-out)}
+.button:hover:not(:disabled) .refresh-fill-icon{transform:rotate(120deg)}
+@keyframes dav-uninstall-row-in{
+  from{opacity:0;transform:translate3d(-6px,0,0)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-uninstall-filter-in{
+  from{opacity:0;transform:translate3d(0,3px,0)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-uninstall-mark-in{
+  from{opacity:0;transform:scale(.92) translate3d(0,4px,0)}
+  to{opacity:1;transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .uninstall-apps-page>.stats-strip,.uninstall-apps-page>.uninstall-workspace,
+  .uninstall-residuals-page>.guard-banner,.uninstall-residuals-page>.residual-summary,.uninstall-residuals-page>.residual-grid,.uninstall-residuals-page>.cleanup-bar,
+  .uninstall-temp-page>.temp-intro,.uninstall-temp-page>.stats-strip,.uninstall-temp-page>.guard-banner,.uninstall-temp-page>.large-panel,
+  .uninstall-settings-page>.panel,.stats-strip>.stat-card,.uninstall-workspace>.panel,.residual-grid>.panel,
+  .app-row,.residual-row,.temp-row,.detail-empty .empty-icon,.list-empty.fill .empty-icon,.summary-mark{animation:none!important}
+}
+
+
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.guard-banner,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.guard-banner,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.guard-banner{
+  animation:dav-residual-banner-in 500ms var(--motion-ease-out) both
+}
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.residual-summary,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.residual-summary,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.residual-summary{
+  animation:dav-residual-summary-in 520ms var(--motion-ease-out) both;
+  animation-delay:70ms
+}
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.residual-summary>.stat-card,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.residual-summary>.stat-card,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.residual-summary>.stat-card{
+  animation:dav-residual-stat-in 430ms var(--motion-ease-out) both
+}
+.shell[data-motion-mode] .uninstall-residuals-page>.residual-summary>.stat-card:nth-child(1){animation-delay:105ms}
+.shell[data-motion-mode] .uninstall-residuals-page>.residual-summary>.stat-card:nth-child(2){animation-delay:145ms}
+.shell[data-motion-mode] .uninstall-residuals-page>.residual-summary>.stat-card:nth-child(3){animation-delay:185ms}
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.residual-grid,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.residual-grid,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.residual-grid{
+  animation:none
+}
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.residual-grid>.residual-panel:nth-child(1),
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.residual-grid>.residual-panel:nth-child(1),
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.residual-grid>.residual-panel:nth-child(1){
+  animation:dav-residual-panel-left-in 560ms var(--motion-ease-out) both;
+  animation-delay:210ms
+}
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.residual-grid>.residual-panel:nth-child(2),
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.residual-grid>.residual-panel:nth-child(2),
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.residual-grid>.residual-panel:nth-child(2){
+  animation:dav-residual-panel-right-in 560ms var(--motion-ease-out) both;
+  animation-delay:255ms
+}
+.shell[data-motion-mode="startup"] .uninstall-residuals-page .residual-row,
+.shell[data-motion-mode="page"] .uninstall-residuals-page .residual-row,
+.shell[data-motion-mode="content"] .uninstall-residuals-page .residual-row{
+  animation:dav-residual-row-in 360ms var(--motion-ease-out) both
+}
+.shell[data-motion-mode] .uninstall-residuals-page .residual-row:nth-child(1){animation-delay:300ms}
+.shell[data-motion-mode] .uninstall-residuals-page .residual-row:nth-child(2){animation-delay:326ms}
+.shell[data-motion-mode] .uninstall-residuals-page .residual-row:nth-child(3){animation-delay:352ms}
+.shell[data-motion-mode] .uninstall-residuals-page .residual-row:nth-child(4){animation-delay:378ms}
+.shell[data-motion-mode] .uninstall-residuals-page .residual-row:nth-child(5){animation-delay:404ms}
+.shell[data-motion-mode] .uninstall-residuals-page .residual-row:nth-child(6){animation-delay:430ms}
+.shell[data-motion-mode] .uninstall-residuals-page .residual-row:nth-child(7){animation-delay:456ms}
+.shell[data-motion-mode] .uninstall-residuals-page .residual-row:nth-child(8){animation-delay:482ms}
+.shell[data-motion-mode] .uninstall-residuals-page .residual-row:nth-child(n+9){animation-delay:508ms}
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.cleanup-bar,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.cleanup-bar,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.cleanup-bar{
+  animation:dav-residual-cleanup-in 520ms var(--motion-ease-out) both;
+  animation-delay:320ms
+}
+.shell[data-motion-mode="selection"] .uninstall-residuals-page .residual-row{
+  animation:none
+}
+.shell[data-motion-mode="selection"] .uninstall-residuals-page>.cleanup-bar{
+  animation:dav-residual-selection-pulse 280ms var(--motion-ease-out) both
+}
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.empty-panel,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.empty-panel,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.empty-panel{
+  animation:dav-residual-empty-in 540ms var(--motion-ease-out) both
+}
+.uninstall-residuals-page .residual-panel .panel-head>svg{
+  transition:transform 300ms var(--motion-ease-out),color 220ms var(--motion-ease-out)
+}
+.uninstall-residuals-page .residual-panel:hover .panel-head>svg{
+  transform:translate3d(0,-1px,0) scale(1.045)
+}
+.uninstall-residuals-page .confidence{
+  transition:transform 220ms var(--motion-ease-out),background-color 220ms var(--motion-ease-out),color 220ms var(--motion-ease-out)
+}
+.uninstall-residuals-page .residual-row:not(.locked):hover .confidence{
+  transform:translate3d(-2px,0,0)
+}
+@keyframes dav-residual-banner-in{
+  from{opacity:0;transform:translate3d(0,-8px,0) scale(.995)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-residual-summary-in{
+  from{opacity:0;transform:translate3d(0,8px,0)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-residual-stat-in{
+  from{opacity:0;transform:translate3d(0,9px,0) scale(.988)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-residual-panel-left-in{
+  from{opacity:0;transform:translate3d(-10px,8px,0) scale(.992)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-residual-panel-right-in{
+  from{opacity:0;transform:translate3d(10px,8px,0) scale(.992)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-residual-row-in{
+  from{opacity:0;transform:translate3d(-7px,0,0)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-residual-cleanup-in{
+  from{opacity:0;transform:translate3d(0,10px,0) scale(.993)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-residual-selection-pulse{
+  from{opacity:.72;transform:translate3d(0,3px,0)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-residual-empty-in{
+  from{opacity:0;transform:translate3d(0,10px,0) scale(.993)}
+  to{opacity:1;transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .uninstall-residuals-page>.guard-banner,
+  .uninstall-residuals-page>.residual-summary,
+  .uninstall-residuals-page>.residual-summary>.stat-card,
+  .uninstall-residuals-page>.residual-grid>.residual-panel,
+  .uninstall-residuals-page .residual-row,
+  .uninstall-residuals-page>.cleanup-bar,
+  .uninstall-residuals-page>.empty-panel{animation:none!important}
+}
+
+[data-motion-mode="selection"] .cleanup-mode-card.active{animation:dav-uninstall-mode-pop 280ms var(--motion-ease-out) both}
+[data-motion-mode="selection"] .high-confirm{animation:dav-uninstall-confirm-in 300ms var(--motion-ease-out) both}
+[data-motion-mode="content"] .auto-cleanup-banner,[data-motion-mode="page"] .auto-cleanup-banner{animation:dav-uninstall-banner-in 360ms var(--motion-ease-out) both}
+@keyframes dav-uninstall-mode-pop{0%{opacity:.72;transform:scale(.985)}100%{opacity:1;transform:scale(1)}}
+@keyframes dav-uninstall-confirm-in{0%{opacity:0;transform:translateY(7px)}100%{opacity:1;transform:translateY(0)}}
+
+
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.residual-empty-grid,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.residual-empty-grid,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.residual-empty-grid{
+  animation:none
+}
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.residual-empty-grid>.empty-panel,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.residual-empty-grid>.empty-panel,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.residual-empty-grid>.empty-panel{
+  animation:dav-residual-empty-card-in 560ms var(--motion-ease-out) both;
+  animation-delay:72ms
+}
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.residual-empty-grid>.forced-scan-panel,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.residual-empty-grid>.forced-scan-panel,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.residual-empty-grid>.forced-scan-panel{
+  animation:dav-residual-forced-panel-in 620ms var(--motion-ease-out) both;
+  animation-delay:132ms
+}
+.shell[data-motion-mode] .uninstall-residuals-page .detail-empty>*{animation:dav-residual-empty-piece-in 440ms var(--motion-ease-out) both}
+.shell[data-motion-mode] .uninstall-residuals-page .detail-empty>*:nth-child(1){animation-delay:138ms}
+.shell[data-motion-mode] .uninstall-residuals-page .detail-empty>*:nth-child(2){animation-delay:188ms}
+.shell[data-motion-mode] .uninstall-residuals-page .detail-empty>*:nth-child(3){animation-delay:232ms}
+.shell[data-motion-mode] .uninstall-residuals-page .detail-empty>*:nth-child(4){animation-delay:276ms}
+.shell[data-motion-mode] .uninstall-residuals-page .forced-fields label,
+.shell[data-motion-mode] .uninstall-residuals-page .forced-fields>.button,
+.shell[data-motion-mode] .uninstall-residuals-page .forced-note{
+  animation:dav-residual-forced-item-in 420ms var(--motion-ease-out) both
+}
+.shell[data-motion-mode] .uninstall-residuals-page .forced-fields label:nth-child(1){animation-delay:198ms}
+.shell[data-motion-mode] .uninstall-residuals-page .forced-fields label:nth-child(2){animation-delay:236ms}
+.shell[data-motion-mode] .uninstall-residuals-page .forced-fields label:nth-child(3){animation-delay:274ms}
+.shell[data-motion-mode] .uninstall-residuals-page .forced-fields>.button{animation-delay:318ms}
+.shell[data-motion-mode] .uninstall-residuals-page .forced-note{animation-delay:358ms}
+.shell[data-motion-mode="startup"] .uninstall-residuals-page>.cleanup-result,
+.shell[data-motion-mode="page"] .uninstall-residuals-page>.cleanup-result,
+.shell[data-motion-mode="content"] .uninstall-residuals-page>.cleanup-result{
+  animation:dav-residual-cleanup-in 520ms var(--motion-ease-out) both;
+  animation-delay:282ms
+}
+.shell[data-motion-mode] .uninstall-residuals-page .residual-row:hover .residual-kind,
+.shell[data-motion-mode] .uninstall-residuals-page .residual-row:hover .confidence{
+  animation:dav-residual-icon-bob 320ms var(--motion-ease-out) both
+}
+@keyframes dav-residual-empty-card-in{
+  from{opacity:0;transform:translate3d(-8px,12px,0) scale(.992)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-residual-forced-panel-in{
+  from{opacity:0;transform:translate3d(10px,14px,0) scale(.992)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-residual-empty-piece-in{
+  from{opacity:0;transform:translate3d(0,8px,0) scale(.988)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-residual-forced-item-in{
+  from{opacity:0;transform:translate3d(0,8px,0)}
+  to{opacity:1;transform:none}
+}
+@keyframes dav-residual-icon-bob{
+  0%{transform:none}
+  50%{transform:translate3d(0,-1px,0) scale(1.04)}
+  100%{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .uninstall-residuals-page>.residual-empty-grid>.empty-panel,
+  .uninstall-residuals-page>.residual-empty-grid>.forced-scan-panel,
+  .uninstall-residuals-page .detail-empty>*,
+  .uninstall-residuals-page .forced-fields label,
+  .uninstall-residuals-page .forced-fields>.button,
+  .uninstall-residuals-page .forced-note,
+  .uninstall-residuals-page>.cleanup-result{animation:none!important}
+}
+
+.shell[data-motion-mode="startup"] .main>.share-page,
+.shell[data-motion-mode="startup"] .main>.activity-page{animation:dav-load-in var(--motion-reveal-duration) var(--motion-ease-out) 144ms both}
+.shell[data-motion-mode="page"] .main>.share-page,
+.shell[data-motion-mode="page"] .main>.activity-page{animation:dav-page-in var(--motion-page-in) var(--motion-ease-out) 58ms both}
+.shell[data-motion-mode="content"] .share-grid>.panel,
+.shell[data-motion-mode="content"] .activity-stats,
+.shell[data-motion-mode="content"] .activity-panel,
+.shell[data-motion-mode="content"] .privacy-banner{animation:dav-soft-in 520ms var(--motion-ease-out) both}
+.shell[data-motion-mode] .share-grid>.panel:nth-child(2){animation-delay:72ms}
+.shell[data-motion-mode] .privacy-banner{animation-delay:144ms}
+.shell[data-motion-mode] .activity-panel{animation-delay:72ms}
+.share-file-row,.received-row{animation:dav-file-in 360ms var(--motion-ease-out) both}
+.share-file-row:nth-child(2),.received-row:nth-child(2){animation-delay:25ms}.share-file-row:nth-child(3),.received-row:nth-child(3){animation-delay:50ms}.share-file-row:nth-child(4),.received-row:nth-child(4){animation-delay:75ms}.share-file-row:nth-child(5),.received-row:nth-child(5){animation-delay:100ms}.share-file-row:nth-child(n+6),.received-row:nth-child(n+6){animation-delay:125ms}
+.qr-wrap svg{animation:dav-qr-in 520ms var(--motion-ease-out) 110ms both}.live-dot,.session-pill>span:first-child{animation:dav-live 1.8s var(--motion-ease-out) infinite}
+.ready-mark,.drop-mark{transition:transform 360ms var(--motion-ease-out),background-color 260ms var(--motion-ease-out)}.ready-panel:hover .ready-mark,.share-drop-zone:hover .drop-mark{transform:translate3d(0,-3px,0) scale(1.025)}
+@keyframes dav-qr-in{from{opacity:0;transform:scale(.965)}to{opacity:1;transform:none}}
+@keyframes dav-live{0%,100%{box-shadow:0 0 0 4px color-mix(in srgb,var(--success) 12%,transparent)}50%{box-shadow:0 0 0 7px color-mix(in srgb,var(--success) 0%,transparent)}}
+@media(prefers-reduced-motion:reduce){.share-page,.activity-page,.share-grid>.panel,.activity-stats,.activity-panel,.privacy-banner,.share-file-row,.received-row,.qr-wrap svg,.live-dot,.session-pill>span:first-child{animation:none!important}}
+
+.shell[data-motion-mode="startup"] .share-stats>.stat-card,.shell[data-motion-mode="page"] .share-stats>.stat-card,.shell[data-motion-mode="content"] .share-stats>.stat-card{animation:dav-soft-in 420ms var(--motion-ease-out) both}.shell[data-motion-mode] .share-stats>.stat-card:nth-child(2){animation-delay:45ms}.shell[data-motion-mode] .share-stats>.stat-card:nth-child(3){animation-delay:90ms}.shell[data-motion-mode] .activity-grid>.panel,.shell[data-motion-mode] .approval-stack,.shell[data-motion-mode] .network-diagnostic{animation:dav-soft-in 460ms var(--motion-ease-out) both}.shell[data-motion-mode] .activity-grid>.panel:nth-child(2){animation-delay:60ms}.live-transfer,.history-row,.approval-row{animation:dav-file-in 340ms var(--motion-ease-out) both}.live-transfer:nth-child(2),.history-row:nth-child(2),.approval-row:nth-child(2){animation-delay:25ms}.live-transfer:nth-child(3),.history-row:nth-child(3),.approval-row:nth-child(3){animation-delay:50ms}.live-transfer:nth-child(4),.history-row:nth-child(4),.approval-row:nth-child(4){animation-delay:75ms}.transfer-progress i{transition:width 180ms linear}@media(prefers-reduced-motion:reduce){.share-stats>.stat-card,.activity-grid>.panel,.approval-stack,.network-diagnostic,.live-transfer,.history-row,.approval-row{animation:none!important}}

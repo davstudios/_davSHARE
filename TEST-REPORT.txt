@@ -1,0 +1,10 @@
+_davSHARE v1.0.1
+
+Status: PASS
+Tests: 55/55 passed via `npm test`.
+JavaScript: `src/main.js` and `src/share-engine.js` syntax checks passed.
+JSON: package/Tauri/capability configuration parsed successfully.
+Stable release: GitHub Actions workflow added for Windows NSIS, macOS Universal DMG and Linux AppImage/DEB with tag/version alignment checks.
+Mobile: bidirectional LAN transfer, Plus Jakarta Sans mobile rendering fix and live session termination preserved from v0.4.3.
+Icons: PNG assets verified RGBA; definitive ICO hash contract preserved; ICNS validated by tests.
+Rust/Tauri native compile: not executed in this environment because Cargo is unavailable; final native build is delegated to the development machine/GitHub Actions runners.
