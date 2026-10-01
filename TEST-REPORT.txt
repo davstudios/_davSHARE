@@ -1,10 +1,14 @@
-_davSHARE v1.0.1
+_davSHARE v26.10.1
 
 Status: PASS
-Tests: 55/55 passed via `npm test`.
-JavaScript: `src/main.js` and `src/share-engine.js` syntax checks passed.
-JSON: package/Tauri/capability configuration parsed successfully.
-Stable release: GitHub Actions workflow added for Windows NSIS, macOS Universal DMG and Linux AppImage/DEB with tag/version alignment checks.
-Mobile: bidirectional LAN transfer, Plus Jakarta Sans mobile rendering fix and live session termination preserved from v0.4.3.
-Icons: PNG assets verified RGBA; definitive ICO hash contract preserved; ICNS validated by tests.
-Rust/Tauri native compile: not executed in this environment because Cargo is unavailable; final native build is delegated to the development machine/GitHub Actions runners.
+Tests: 62/62 passed via `npm test`.
+JavaScript: `src/main.js`, `src/share-engine.js` and `src/helpers.js` syntax checks passed.
+JSON: package, package-lock, Tauri and capability configuration parsed successfully.
+YAML: `.github/workflows/release.yml` parsed successfully and the Tauri publish step retains its bundle arguments.
+Version sync: package.json, package-lock.json, Cargo.toml, Cargo.lock and Tauri configuration are aligned on 26.10.1.
+Metadata: _davstudios publisher, davstudios.it homepage, © 2026 copyright, MIT license, Productivity category and Debian metadata verified.
+Stable release: GitHub Actions builds Windows NSIS, macOS Universal DMG and Linux AppImage/DEB, reads the bilingual 🇮🇹/🇺🇸 Description from the tagged commit and rejects release commits missing either language section.
+Linux hardening: Microsoft apt repositories are disabled when present before installing the Ubuntu Tauri dependencies.
+Functional preservation: LAN sharing engine, QR/session logic, transfer handling, network security, styles and Rust backend source remain unchanged; `src/main.js` only removes the obsolete hardcoded version fallback and continues to read the application version from Tauri.
+Icons: PNG assets, definitive ICO contract and ICNS remain unchanged.
+Rust/Tauri native compile: not executed in this environment because Cargo/Vite are unavailable; final native build is delegated to the development machine/GitHub Actions runners.

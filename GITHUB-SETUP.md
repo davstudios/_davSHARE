@@ -1,8 +1,22 @@
-# GitHub setup
+# GitHub setup — _davSHARE
 
-Create a repository named `_davSHARE`, copy this project into the repository root, commit and push, then create the preview tag:
+La release v26.10.1 segue lo standard `_davstudios` con versioning `YY.M.REVISIONE`.
+
+## GitHub Desktop
+
+Summary:
+
+`_davSHARE v26.10.1`
+
+La Description del commit deve contenere entrambe le sezioni `🇮🇹` e `🇺🇸`. Il workflow GitHub Actions legge automaticamente il body del commit associato al tag e lo usa come descrizione della GitHub Release. Se una delle due sezioni manca, la pubblicazione viene interrotta.
+
+Dopo il commit esegui **Push origin**.
+
+## Tag release
 
 ```bash
-git tag -a v0.1.0 -m "Preview _davSHARE v0.1.0"
-git push origin v0.1.0
+git tag -a v26.10.1 -m "Release _davSHARE v26.10.1"
+git push origin v26.10.1
 ```
+
+Il tag deve essere coerente con le versioni dichiarate in `package.json`, `package-lock.json`, `src-tauri/Cargo.toml`, `src-tauri/Cargo.lock` e `src-tauri/tauri.conf.json`.

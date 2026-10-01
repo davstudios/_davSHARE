@@ -1,4 +1,4 @@
-# BUILD NOTES — _davSHARE v1.0.1
+# BUILD NOTES — _davSHARE v26.10.1
 
 Stack: Tauri 2.12, Rust 1.90+, JavaScript e Vite.
 
@@ -31,7 +31,7 @@ Le dipendenze core/plugin sono fissate a versioni precise per evitare mismatch t
 
 ## Release automatica
 
-`.github/workflows/release.yml` si attiva sui tag `v*`, verifica che tag, `package.json`, `tauri.conf.json` e `Cargo.toml` abbiano la stessa versione, esegue i test e pubblica una GitHub Release stabile con:
+`.github/workflows/release.yml` si attiva sui tag `v*`, verifica che tag, `package.json`, `tauri.conf.json` e `Cargo.toml` abbiano la stessa versione, richiede nel commit associato al tag una Description contenente entrambe le sezioni 🇮🇹 e 🇺🇸, esegue i test e pubblica una GitHub Release stabile usando automaticamente quella Description come corpo della release:
 
 - Windows: NSIS
 - macOS: Universal DMG

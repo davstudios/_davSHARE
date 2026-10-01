@@ -34,7 +34,7 @@ const isTauri='__TAURI_INTERNALS__' in window;
 const stored=JSON.parse(localStorage.getItem('davshare-settings')||'{}');
 const storedHistory=JSON.parse(localStorage.getItem('davshare-history')||'[]');
 const state={
-  page:'send',version:'1.0.1',files:[],runtime:null,diagnostics:null,session:null,status:null,busy:false,dragging:false,history:Array.isArray(storedHistory)?storedHistory.slice(0,50):[],statusShape:'',
+  page:'send',version:'',files:[],runtime:null,diagnostics:null,session:null,status:null,busy:false,dragging:false,history:Array.isArray(storedHistory)?storedHistory.slice(0,50):[],statusShape:'',
   settings:{theme:stored.theme||'system',language:stored.language||'it',deviceName:stored.deviceName||'',receiveDir:stored.receiveDir||'',requireConfirmation:stored.requireConfirmation!==false,uploadLimitGb:String(stored.uploadLimitGb||'10'),networkIp:stored.networkIp||'auto'}
 };
 

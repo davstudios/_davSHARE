@@ -1,8 +1,10 @@
 [package]
 name = "davshare"
-version = "1.0.1"
-description = "_davSHARE desktop application"
+version = "26.10.1"
+description = "_davSHARE — local cross-platform file sharing by _davstudios."
 authors = ["_davstudios"]
+license = "MIT"
+homepage = "https://davstudios.it"
 edition = "2021"
 rust-version = "1.90"
 

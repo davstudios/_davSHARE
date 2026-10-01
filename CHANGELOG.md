@@ -1,5 +1,16 @@
 # Changelog
 
+## 26.10.1
+
+- Adottato il nuovo standard di release `_davstudios` e il sistema di versioning `YY.M.REVISIONE`.
+- Sincronizzata la versione in `package.json`, `package-lock.json`, `Cargo.toml`, `Cargo.lock`, configurazione Tauri, documentazione e test.
+- Standardizzati i metadata ufficiali con publisher `_davstudios`, homepage `davstudios.it`, copyright © 2026 `_davstudios`, licenza MIT, categoria Productivity e metadata Debian per Linux.
+- Mantenuto invariato l'identifier storico `studio.dav.share`.
+- Aggiunte al README le istruzioni per release non firmate su Windows SmartScreen, macOS Gatekeeper e Linux AppImage.
+- Il workflow GitHub Actions usa la Description bilingue 🇮🇹/🇺🇸 del commit associato al tag come descrizione della GitHub Release e ne verifica la presenza prima della pubblicazione.
+- Mantenuto l'hardening Linux contro repository Microsoft non raggiungibili sui runner Ubuntu.
+- Nessuna modifica apportata al motore di condivisione LAN, ai trasferimenti, alle sessioni QR, alla sicurezza di rete, all'interfaccia o alla logica funzionale dell'app.
+
 ## 1.0.1
 
 - Patch release di `_davSHARE` per riallineare la versione dopo un errore durante il push della v1.0.0.
