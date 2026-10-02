@@ -1,4 +1,4 @@
-# Supporto multipiattaforma — _davSHARE v26.10.1
+# Supporto multipiattaforma — _davSHARE v26.10.2
 
 ## Desktop nativo
 

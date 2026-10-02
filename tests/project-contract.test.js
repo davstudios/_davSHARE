@@ -62,4 +62,4 @@ test('metadata pacchetto _davstudios presenti',()=>{const pkg=JSON.parse(fs.read
 
 test('identifier storico resta invariato',()=>{const tauri=JSON.parse(fs.readFileSync('src-tauri/tauri.conf.json','utf8'));assert.equal(tauri.identifier,'studio.dav.share');});
 
-test('package metadata documenta lo standard release',()=>{const metadata=fs.readFileSync('PACKAGE-METADATA.md','utf8');assert.match(metadata,/Version: `26\.10\.1`/);assert.match(metadata,/Public release tag: `v26\.10\.1`/);assert.match(metadata,/Developer \/ Publisher: `_davstudios`/);assert.match(metadata,/Identifier: `studio\.dav\.share`/);assert.match(metadata,/Category: `Productivity`/);});
+test('package metadata documenta lo standard release',()=>{const metadata=fs.readFileSync('PACKAGE-METADATA.md','utf8');assert.match(metadata,/Version: `26\.10\.2`/);assert.match(metadata,/Public release tag: `v26\.10\.2`/);assert.match(metadata,/Developer \/ Publisher: `_davstudios`/);assert.match(metadata,/Identifier: `studio\.dav\.share`/);assert.match(metadata,/Category: `Productivity`/);});

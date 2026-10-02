@@ -1,5 +1,13 @@
 # Changelog
 
+## 26.10.2
+
+- Corretto il test di sincronizzazione della versione su Windows: `Cargo.lock` viene ora letto correttamente sia con terminatori LF sia CRLF.
+- Aggiunto un test di regressione che simula esplicitamente un checkout Windows con `Cargo.lock` in CRLF.
+- Rafforzato `.gitattributes` per mantenere gli script shell e `src-tauri/Cargo.lock` con terminatori LF nei checkout futuri.
+- Sincronizzata la versione tecnica e di release a `26.10.2`.
+- Nessuna modifica apportata al motore di condivisione LAN, ai trasferimenti, alle sessioni QR, alla sicurezza di rete, all'interfaccia o alla logica funzionale dell'app.
+
 ## 26.10.1
 
 - Adottato il nuovo standard di release `_davstudios` e il sistema di versioning `YY.M.REVISIONE`.

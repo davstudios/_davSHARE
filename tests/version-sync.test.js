@@ -11,16 +11,22 @@ const tauriVersion = tauri.version;
 const cargoText = readFileSync(resolve(root, 'src-tauri/Cargo.toml'), 'utf8');
 const cargoVersion = cargoText.match(/^version\s*=\s*"([^"]+)"/m)?.[1];
 const cargoLockText = readFileSync(resolve(root, 'src-tauri/Cargo.lock'), 'utf8');
-const cargoLockVersion = cargoLockText.match(/\[\[package\]\]\nname = "davshare"\nversion = "([^"]+)"/)?.[1];
+const cargoLockVersion = cargoLockText.match(/\[\[package\]\]\r?\nname = "davshare"\r?\nversion = "([^"]+)"/)?.[1];
 const mainSource = readFileSync(resolve(root, 'src/main.js'), 'utf8');
 
 test('release versions stay aligned', () => {
-  assert.equal(packageVersion, '26.10.1');
+  assert.equal(packageVersion, '26.10.2');
   assert.equal(packageLock.version, packageVersion);
   assert.equal(packageLock.packages[''].version, packageVersion);
   assert.equal(tauriVersion, packageVersion);
   assert.equal(cargoVersion, packageVersion);
   assert.equal(cargoLockVersion, packageVersion);
+});
+
+test('Cargo.lock remains readable with Windows CRLF line endings', () => {
+  const windowsCargoLock = cargoLockText.replace(/(?<!\r)\n/g, '\r\n');
+  const windowsCargoLockVersion = windowsCargoLock.match(/\[\[package\]\]\r?\nname = "davshare"\r?\nversion = "([^"]+)"/)?.[1];
+  assert.equal(windowsCargoLockVersion, packageVersion);
 });
 
 test('UI reads the app version from Tauri instead of hardcoding it', () => {

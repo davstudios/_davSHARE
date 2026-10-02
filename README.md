@@ -1,4 +1,4 @@
-# _davSHARE v26.10.1
+# _davSHARE v26.10.2
 
 🇮🇹 `_davSHARE` è l'app desktop di _davstudios per condividere file e cartelle nella rete locale senza cloud. L'app gira su Windows, macOS e Linux; Android, iPhone, iPad e altri dispositivi accedono dal browser tramite un QR temporaneo, senza installare APK o IPA.
 
@@ -59,7 +59,7 @@ Scarica sempre le release dalla repository GitHub ufficiale di `_davstudios`. Qu
 - Licenza: MIT
 - Categoria: Productivity
 - Bundle identifier: `studio.dav.share`
-- Versione corrente: `26.10.1`
+- Versione corrente: `26.10.2`
 
 ## Installing unsigned GitHub releases
 
@@ -91,7 +91,7 @@ Always download releases from the official `_davstudios` GitHub repository. When
 - License: MIT
 - Category: Productivity
 - Bundle identifier: `studio.dav.share`
-- Current version: `26.10.1`
+- Current version: `26.10.2`
 
 ## Avvio sviluppo
 

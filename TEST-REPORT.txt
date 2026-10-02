@@ -1,11 +1,12 @@
-_davSHARE v26.10.1
+_davSHARE v26.10.2
 
 Status: PASS
-Tests: 62/62 passed via `npm test`.
+Tests: 63/63 passed via `npm test`.
 JavaScript: `src/main.js`, `src/share-engine.js` and `src/helpers.js` syntax checks passed.
 JSON: package, package-lock, Tauri and capability configuration parsed successfully.
 YAML: `.github/workflows/release.yml` parsed successfully and the Tauri publish step retains its bundle arguments.
-Version sync: package.json, package-lock.json, Cargo.toml, Cargo.lock and Tauri configuration are aligned on 26.10.1.
+Version sync: package.json, package-lock.json, Cargo.toml, Cargo.lock and Tauri configuration are aligned on 26.10.2.
+Windows CRLF regression: Cargo.lock version detection verified with both LF and CRLF line endings; the complete 63-test suite also passes with Cargo.lock physically converted to CRLF.
 Metadata: _davstudios publisher, davstudios.it homepage, © 2026 copyright, MIT license, Productivity category and Debian metadata verified.
 Stable release: GitHub Actions builds Windows NSIS, macOS Universal DMG and Linux AppImage/DEB, reads the bilingual 🇮🇹/🇺🇸 Description from the tagged commit and rejects release commits missing either language section.
 Linux hardening: Microsoft apt repositories are disabled when present before installing the Ubuntu Tauri dependencies.

@@ -1,6 +1,6 @@
 [package]
 name = "davshare"
-version = "26.10.1"
+version = "26.10.2"
 description = "_davSHARE — local cross-platform file sharing by _davstudios."
 authors = ["_davstudios"]
 license = "MIT"

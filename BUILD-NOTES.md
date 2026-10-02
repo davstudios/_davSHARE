@@ -1,4 +1,4 @@
-# BUILD NOTES — _davSHARE v26.10.1
+# BUILD NOTES — _davSHARE v26.10.2
 
 Stack: Tauri 2.12, Rust 1.90+, JavaScript e Vite.
 
