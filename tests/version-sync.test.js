@@ -15,7 +15,7 @@ const cargoLockVersion = cargoLockText.match(/\[\[package\]\]\r?\nname = "davsha
 const mainSource = readFileSync(resolve(root, 'src/main.js'), 'utf8');
 
 test('release versions stay aligned', () => {
-  assert.equal(packageVersion, '26.10.2');
+  assert.equal(packageVersion, '26.10.3');
   assert.equal(packageLock.version, packageVersion);
   assert.equal(packageLock.packages[''].version, packageVersion);
   assert.equal(tauriVersion, packageVersion);
@@ -44,3 +44,4 @@ test('identità _davSHARE coerente', () => {
 test('interfaccia stabile non mostra Preview', () => {
   assert.doesNotMatch(mainSource, /· Preview/);
 });
+

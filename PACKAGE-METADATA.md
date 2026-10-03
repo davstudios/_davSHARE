@@ -1,8 +1,8 @@
 # _davSHARE — Package metadata
 
 - Product name: `_davSHARE`
-- Version: `26.10.2`
-- Public release tag: `v26.10.2`
+- Version: `26.10.3`
+- Public release tag: `v26.10.3`
 - Developer / Publisher: `_davstudios`
 - Identifier: `studio.dav.share`
 - Homepage / Support: `https://davstudios.it`
@@ -16,3 +16,4 @@
 - Code signing: no commercial Windows certificate; no Apple Developer ID/notarization in this release
 
 L'identifier storico è preservato per mantenere la continuità dell'identità applicativa tra le release.
+

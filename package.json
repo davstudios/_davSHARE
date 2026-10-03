@@ -1,6 +1,6 @@
 {
   "name": "davshare-app",
-  "version": "26.10.2",
+  "version": "26.10.3",
   "private": true,
   "type": "module",
   "description": "_davSHARE — local cross-platform file sharing by _davstudios.",
@@ -26,3 +26,4 @@
   "license": "MIT",
   "homepage": "https://davstudios.it"
 }
+

@@ -1,10 +1,10 @@
 @echo off
 setlocal
 cd /d "%~dp0"
-title _davSHARE v26.10.2
+title _davSHARE v26.10.3
 
 echo ========================================
-echo        _davSHARE v26.10.2
+echo        _davSHARE v26.10.3
 echo ========================================
 echo.
 where node >nul 2>nul || goto node_error
@@ -44,3 +44,4 @@ echo.
 echo Copia qui in chat il messaggio mostrato sopra.
 pause
 exit /b 1
+

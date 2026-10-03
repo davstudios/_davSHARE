@@ -13,3 +13,4 @@ export default defineConfig({
     watch:{ignored:['**/src-tauri/**']}
   }
 });
+

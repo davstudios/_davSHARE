@@ -1,6 +1,6 @@
 [package]
 name = "davshare"
-version = "26.10.2"
+version = "26.10.3"
 description = "_davSHARE — local cross-platform file sharing by _davstudios."
 authors = ["_davstudios"]
 license = "MIT"
@@ -26,3 +26,4 @@ qrcode = { version = "0.14", default-features = false, features = ["svg"] }
 
 zip = "0.6"
 fs2 = "0.4"
+

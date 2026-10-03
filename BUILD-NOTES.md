@@ -1,4 +1,6 @@
-# BUILD NOTES — _davSHARE v26.10.2
+# BUILD NOTES — _davSHARE v26.10.3
+
+La v26.10.3 applica inoltre la repository normalization completa dei file testuali, mantenendo invariati gli asset binari e la logica funzionale. Il controllo di release verifica ora anche `package-lock.json` e `Cargo.lock`, con parser del lockfile Rust compatibile LF/CRLF.
 
 Stack: Tauri 2.12, Rust 1.90+, JavaScript e Vite.
 
@@ -40,3 +42,4 @@ Le dipendenze core/plugin sono fissate a versioni precise per evitare mismatch t
 Il job Linux disabilita preventivamente eventuali repository Microsoft presenti sul runner Ubuntu che possono restituire HTTP 403 pur non essendo necessari alla build Tauri.
 
 L'ambiente usato per preparare il pacchetto non dispone di Cargo, quindi la compilazione Tauri nativa finale viene validata dai runner GitHub/ambiente di sviluppo.
+

@@ -1,5 +1,14 @@
 # Changelog
 
+## 26.10.3
+
+- Eseguita la repository normalization completa dei file testuali con regole EOL/EOF deterministiche, così da riallinearli al commit della release corrente senza modifiche funzionali.
+- Sincronizzata la release `26.10.3` in package npm, package-lock, Tauri, Cargo, Cargo.lock, documentazione e test.
+- Rafforzato il controllo GitHub Actions della versione includendo `package-lock.json` e `Cargo.lock`.
+- Mantenuta e verificata la compatibilità LF/CRLF del parser `Cargo.lock` per i checkout Windows.
+- Preservati byte-per-byte tutti gli asset binari e aggiunti metadata dedicati nella cartella `src-tauri/icons`.
+- Preservati integralmente motore LAN, sessioni QR, trasferimenti, sicurezza di rete, interfaccia, identifier storico e metadata `_davstudios`.
+
 ## 26.10.2
 
 - Corretto il test di sincronizzazione della versione su Windows: `Cargo.lock` viene ora letto correttamente sia con terminatori LF sia CRLF.
@@ -108,3 +117,4 @@
 
 - Prima base funzionante desktop + browser mobile.
 - Invio e ricezione tramite QR temporaneo sulla LAN.
+

@@ -1,4 +1,4 @@
-# Supporto multipiattaforma — _davSHARE v26.10.2
+# Supporto multipiattaforma — _davSHARE v26.10.3
 
 ## Desktop nativo
 
@@ -21,3 +21,6 @@ La pagina browser mobile usa lo stesso stile della suite, Plus Jakarta Sans quan
 ## Release
 
 Il workflow GitHub costruisce e pubblica automaticamente installer NSIS per Windows, Universal DMG per macOS e AppImage/DEB per Linux quando viene pubblicato un tag `v*` coerente con la versione del progetto. La Description bilingue 🇮🇹/🇺🇸 del commit associato al tag viene utilizzata come descrizione della GitHub Release; il workflow interrompe la pubblicazione se una delle due sezioni manca.
+
+La v26.10.3 applica la repository normalization dei file testuali e preserva byte-per-byte gli asset binari. Il workflow verifica anche i lockfile prima della pubblicazione della release.
+

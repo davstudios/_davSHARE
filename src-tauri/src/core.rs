@@ -20,3 +20,4 @@ pub fn inspect_paths(paths: Vec<String>) -> Vec<Item> {
 }
 
 pub fn result(ok: bool, title: &str, message: &str, details: String) -> ActionResult { ActionResult { ok, title: title.into(), message: message.into(), details } }
+

@@ -10,3 +10,4 @@ test('formatRemaining usa minuti e secondi',()=>{assert.equal(formatRemaining(65
 
 test('transferRate calcola byte al secondo',async()=>{const {transferRate}=await import('../src/share-engine.js');assert.equal(transferRate(1000,10,12),500);});
 test('transferEta stima il tempo rimanente',async()=>{const {transferEta}=await import('../src/share-engine.js');assert.equal(transferEta(1000,500,250),2);assert.equal(transferEta(1000,1000,250),0);});
+

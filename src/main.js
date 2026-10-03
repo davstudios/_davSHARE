@@ -238,3 +238,4 @@ async function init(){
   matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{if(state.settings.theme==='system')render('content');});
 }
 init();
+

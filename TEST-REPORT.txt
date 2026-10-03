@@ -1,15 +1,63 @@
-_davSHARE v26.10.2
+_davSHARE v26.10.3 — Test report
+Date: 2026-10-03
 
-Status: PASS
-Tests: 63/63 passed via `npm test`.
-JavaScript: `src/main.js`, `src/share-engine.js` and `src/helpers.js` syntax checks passed.
-JSON: package, package-lock, Tauri and capability configuration parsed successfully.
-YAML: `.github/workflows/release.yml` parsed successfully and the Tauri publish step retains its bundle arguments.
-Version sync: package.json, package-lock.json, Cargo.toml, Cargo.lock and Tauri configuration are aligned on 26.10.2.
-Windows CRLF regression: Cargo.lock version detection verified with both LF and CRLF line endings; the complete 63-test suite also passes with Cargo.lock physically converted to CRLF.
-Metadata: _davstudios publisher, davstudios.it homepage, © 2026 copyright, MIT license, Productivity category and Debian metadata verified.
-Stable release: GitHub Actions builds Windows NSIS, macOS Universal DMG and Linux AppImage/DEB, reads the bilingual 🇮🇹/🇺🇸 Description from the tagged commit and rejects release commits missing either language section.
-Linux hardening: Microsoft apt repositories are disabled when present before installing the Ubuntu Tauri dependencies.
-Functional preservation: LAN sharing engine, QR/session logic, transfer handling, network security, styles and Rust backend source remain unchanged; `src/main.js` only removes the obsolete hardcoded version fallback and continues to read the application version from Tauri.
-Icons: PNG assets, definitive ICO contract and ICNS remain unchanged.
-Rust/Tauri native compile: not executed in this environment because Cargo/Vite are unavailable; final native build is delegated to the development machine/GitHub Actions runners.
+Automated tests: 63/63 passed
+- Core utility tests: passed
+- Icon format and definitive ICO tests: passed
+- LAN sharing engine tests: passed
+- Source comment audit: passed
+- Package metadata contract: passed
+- GitHub Release bilingual-description contract: passed
+- Linux release hardening contract: passed
+- Historical identifier contract: passed
+- Version synchronization across package/lock/Tauri/Cargo/Cargo.lock: passed
+- Release workflow lockfile-version verification: passed
+- Windows CRLF Cargo.lock regression: passed
+
+Static validation:
+- src/main.js: syntax valid
+- src/share-engine.js: syntax valid
+- src/helpers.js: syntax valid
+- vite.config.js: syntax valid
+- package.json: valid JSON
+- package-lock.json: valid JSON
+- src-tauri/tauri.conf.json: valid JSON
+- src-tauri/capabilities/default.json: valid JSON
+- .github/workflows/release.yml: valid YAML
+
+Bundle metadata:
+- Version: 26.10.3
+- Public tag: v26.10.3
+- Publisher: _davstudios
+- Homepage: https://davstudios.it
+- License: MIT
+- Copyright: © 2026 _davstudios
+- Identifier preserved: studio.dav.share
+- Category: Productivity
+- Linux DEB section: utils
+- Linux DEB priority: optional
+
+Release workflow:
+- Windows x64 NSIS
+- macOS Universal DMG
+- Linux x64 AppImage and DEB
+- GitHub Release body is read from the tagged commit Description
+- Both 🇮🇹 and 🇺🇸 sections are required
+- Linux apt workflow hardened against unavailable Microsoft repositories
+
+Functional comparison:
+- Frontend, LAN transfer engine and Rust functional sources are preserved from the v26.10.2 baseline apart from repository-normalization whitespace at EOF.
+- Binary assets are preserved byte-for-byte.
+- Repository text files are intentionally normalized so Git associates them with the v26.10.3 release commit.
+- 52/52 pre-existing text files changed as part of the normalization; 6/6 pre-existing binary assets remain byte-for-byte identical.
+- Dedicated release metadata was added to `src-tauri/icons` so the binary-only icon directory can be associated with the current release without altering artwork.
+- No functional differences were introduced by this repository-normalization update.
+
+Code signing:
+- No trusted commercial Windows code-signing certificate configured.
+- No Apple Developer ID/notarization configured.
+- README contains SmartScreen, Gatekeeper and AppImage guidance.
+
+Build validation:
+- Native Tauri/Rust bundles are produced by GitHub Actions on Windows, macOS and Linux runners.
+

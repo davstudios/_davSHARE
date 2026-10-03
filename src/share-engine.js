@@ -35,3 +35,4 @@ export function transferEta(total,transferred,bytesPerSecond){
   if(!remaining||rate<=0)return 0;
   return Math.ceil(remaining/rate);
 }
+

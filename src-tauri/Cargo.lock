@@ -722,7 +722,7 @@ dependencies = [
 
 [[package]]
 name = "davshare"
-version = "26.10.2"
+version = "26.10.3"
 dependencies = [
  "fs2",
  "qrcode",
@@ -5455,3 +5455,4 @@ dependencies = [
  "syn 3.0.6",
  "winnow 1.0.4",
 ]
+

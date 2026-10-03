@@ -12,3 +12,4 @@ pub fn run_action(action:String,paths:Vec<String>,_options:ActionOptions)->Actio
     let Some(folder)=paths.first()else{return result(false,"Folder required","Choose the folder to share",String::new());};
     let listener=match TcpListener::bind("0.0.0.0:0"){Ok(v)=>v,Err(e)=>return result(false,"Server failed","Unable to bind a LAN port",e.to_string())};let port=listener.local_addr().map(|a|a.port()).unwrap_or(0);let ip=local_ip().map(|v|v.to_string()).unwrap_or_else(|_|"127.0.0.1".into());let token=Uuid::new_v4().simple().to_string();let folder=PathBuf::from(folder);let thread_token=token.clone();thread::spawn(move||{for stream in listener.incoming().filter_map(Result::ok){serve(stream,folder.clone(),thread_token.clone());}});let url=format!("http://{}:{}/?token={}",ip,port,token);result(true,"LAN session started","Open this address from a device on the same network",url)
 }
+
